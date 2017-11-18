@@ -48,7 +48,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.1.0)
-    cancancan (1.16.0)
+    cancancan (2.1.1)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -230,7 +230,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass (~> 3.3.1)
   byebug
-  cancancan
+  cancancan (~> 2.0)
   capistrano (= 3.4.0)
   capistrano-bundler
   capistrano-rails
@@ -260,4 +260,4 @@ DEPENDENCIES
   whenever
 
 BUNDLED WITH
-   1.12.5
+   1.16.0

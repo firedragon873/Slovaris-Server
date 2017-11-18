@@ -1,3 +1,20 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :users, path: "",
+                     path_names: { sign_in: 'sign_in',
+                                   sign_up: 'sign_up',
+                                   sign_out: 'sign_out',
+                                   password: 'password',
+                                   confirmation: 'confirmation',
+                                   unlock: 'unlock'
+                                 },
+                     controllers: { registrations: "users/registrations",
+                                     sessions:     "users/sessions",
+                                     # passwords:     "passwords",
+                                     # confirmations: "confirmations",
+                                   }
+
+  devise_scope :user do
+    # Here write our routes
+  end
+
 end

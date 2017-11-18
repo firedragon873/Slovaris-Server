@@ -40,7 +40,7 @@ gem 'devise'
 # Upstars scripts
 gem 'foreman', '0.63.0'
 
-gem 'cancancan'
+gem 'cancancan', '~> 2.0'
 # gem 'rails_admin', '0.7.0'
 gem "paperclip", "~> 4.3"
 gem 'mail'
