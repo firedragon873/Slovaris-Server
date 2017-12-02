@@ -272,9 +272,9 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
-  # config.warden do |manager|
-  #   manager.strategies.add(:devise_auth_strategy, Devise::Strategies::AuthStrategy)
-  #   manager.default_strategies(:scope => :user).unshift :devise_auth_strategy
-  #   manager.failure_app = FailureApp
-  # end
+  config.warden do |manager|
+    # manager.strategies.add(:devise_auth_strategy, Devise::Strategies::AuthStrategy)
+    # manager.default_strategies(:scope => :user).unshift :devise_auth_strategy
+    manager.failure_app = SlovarisFailureApp
+  end
 end

@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   has_one :user_group
 
+  enum gender: [:male, :female]
+
 
   def change_password(password, password_confirmation)
     new_token = generate_authentication_token

@@ -13,4 +13,51 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require jquery.mask.min
+//= require moment
+//= require moment-ru
+
+$(document).on('turbolinks:load', function() {
+});
+
+function convertFormDataToJSON(htmlForm) {
+  var formData  = new FormData();
+  htmlForm.find("input, textarea, select").each(function(index) {
+    var field = $(this)[0];
+    if(field.type === "file") {
+      if($(this)[0].files.length !== 0) {
+        formData.append($(this).prop("name"), $(this)[0].files[0]);
+      }
+    }
+    else if(field.type === "checkbox") {
+      if($(this).prop("checked") === true) {
+        formData.append(field.name, field.value);
+      }
+    }
+    else {
+      formData.append(field.name, field.value);
+    }
+  });
+
+  return formData;
+}
+
+function navigateToUrl(url) {
+  Turbolinks.visit(url);
+}
+
+function back() {
+  window.history.go(-1);
+}
+
+function reloadPage() {
+  window.location.reload(true);
+}
+
+function isPresent(value) {
+  return value !== undefined && value !== null;
+}
+
+function isBlank(value) {
+  return value === undefined || value === null;
+}

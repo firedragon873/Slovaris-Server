@@ -14,7 +14,12 @@ Rails.application.routes.draw do
                                    }
 
   devise_scope :user do
-    # Here write our routes
+    namespace :api do
+      namespace :users do
+        resources :sessions,      only: [:create]
+        resources :registrations, only: [:create]
+      end
+    end
   end
 
 end

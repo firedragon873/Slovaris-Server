@@ -12,6 +12,9 @@ module SlovarisServer
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
+    config.i18n.default_locale = :ru
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', 'timezone.ru.yml')]
+
     # config.action_mailer.default_url_options = { host: ENV["HOST"] }
     # config.action_mailer.delivery_method = :smtp
     # config.action_mailer.raise_delivery_errors = true # to raise error if smtp has error on setup

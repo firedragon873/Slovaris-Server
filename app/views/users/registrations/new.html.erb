@@ -1,31 +1,33 @@
-<h2>Sign up</h2>
+<h2><%= t(:register_title, scope: @i18n_scope) %></h2>
 
-<%= form_for(resource, as: resource_name, url: "/") do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :login %><br />
-    <%= f.email_field :login, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: false %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %> <br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+<%= form_tag "/api/users/registrations", method: "post", class: "session_form" do |form| %>
+  <div class="auth_form_content">
+    <div class="auth_fields_container">
+      <%= text_field_tag "user[login]", "", class: "form-control",
+                                            placeholder: t(:login_placeholder, scope: @i18n_scope),
+                                            autofocus: "autofocus",
+                                            autocomplete: "off",
+                                            type: "email" %>
+      <%= text_field_tag "user[password]", "", class: "form-control",
+                                               type: "password",
+                                               autocomplete: "off",
+                                               placeholder: t(:password_placeholder, scope: @i18n_scope)%>
+      <%= text_field_tag "user[password_confirmation]", "", class: "form-control",
+                                                            type: "password",
+                                                            autocomplete: "off",
+                                                            placeholder: t(:password_confirmation_placeholder, scope: @i18n_scope)%>
+      <%= text_field_tag "user[name]", "", class: "form-control",
+                                           autocomplete: "off",
+                                           placeholder: t(:name_placeholder, scope: @i18n_scope) %>
+      <%= select_tag "user[gender]", options_for_select(User.genders.map { |key, value| [t(key, scope: [:enums]), value] } ),
+                                     class: "form-control" %>
+      <%= text_field_tag "user[birthday]", "", class: "form-control",
+                                              autocomplete: "off",
+                                              type: "tel",
+                                              placeholder: t(:birthday_placeholder, scope: @i18n_scope) %>
+    </div>
+    <div class="submit_container">
+      <%= submit_tag t(:sign_up_button, scope: @i18n_scope), class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

@@ -1,26 +1,27 @@
-<h2>Log in</h2>
+<h2><%= t(:login_title, scope: @i18n_scope) %></h2>
 
-<%= form_for(resource, as: resource_name, url: "/sign_in") do |f| %>
-  <div class="field">
-    <%= f.label :login %><br />
-    <%= f.email_field :login, autofocus: true %>
-  </div>
-  <br />
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-  <br />
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<%= form_tag "/api/users/sessions", method: "post", class: "session_form" do |form| %>
+  <div class="auth_form_content">
+    <div class="auth_fields_container">
+      <%= text_field_tag "user[login]", "", class: "form-control",
+                                            placeholder: t(:login_placeholder, scope: @i18n_scope),
+                                            autofocus: "autofocus",
+                                            autocomplete: "off",
+                                            type: "email" %>
+      <%= text_field_tag "user[password]", "", class: "form-control",
+                                               type: "password",
+                                               autocomplete: "off",
+                                               placeholder: t(:password_placeholder, scope: @i18n_scope)%>
     </div>
-  <% end -%>
-  <br />
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="remember_me_container">
+      <%= check_box_tag "user[remember_me]", "1", false, checked: "checked" %>
+      <%= label_tag "user[remember_me]", I18n.t(:remember_me, scope: @i18n_scope), class: "control-label" %>
+    </div>
+    <div class="submit_container">
+      <%= submit_tag t(:sign_in_button, scope: @i18n_scope), class: "btn btn-primary" %>
+    </div>
+    <div class="links_container">
+      <%= link_to t(:sign_up_link, scope: @i18n_scope), "/sign_up", :'data-turbolinks' => "true" %>
+    </div>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>

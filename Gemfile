@@ -41,7 +41,6 @@ gem 'devise'
 gem 'foreman', '0.63.0'
 
 gem 'cancancan', '~> 2.0'
-# gem 'rails_admin', '0.7.0'
 gem "paperclip", "~> 4.3"
 gem 'mail'
 gem 'roo', '~> 2.3.1'

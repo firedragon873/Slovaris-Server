@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t(:application_name) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%= stylesheet_link_tag    'application',        media: 'all', :'data-turbolinks-track' => "reload" %>
+    <%= stylesheet_link_tag    'users/auth_styles',  media: 'all', :'data-turbolinks-track' => "reload" %>
+
+    <%= javascript_include_tag 'application',        media: 'all', :'data-turbolinks-track' => "reload" %>
+    <%= javascript_include_tag 'users/auth_scripts', media: 'all', :'data-turbolinks-track' => "reload" %>
+
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner">
+        <%= yield %>
+      </div>
+    </div>
+
+  </body>
+</html>
