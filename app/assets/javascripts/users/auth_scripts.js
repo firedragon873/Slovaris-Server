@@ -17,35 +17,32 @@ $(document).on('turbolinks:load', function() {
       contentType: false,
       success: function(result, textStatus, jqXHR) {
         setLoginButtonDisabled(false);
-        // var data   = result.data;
-        // var errors = result.errors;
-        // if(result.success === true) {
-        //   if(isPresent(data.message) && isPresent(data.title)) {
-        //     callMessageDialog(true, data.title, [data.message]);
-        //   }
-        //   else {
-        //     window.location.replace("/admin");
-        //   }
-        // }
-        // else {
-        //   callMessageDialog(false, errors.title, errors.errors);
-        // }
+        var data   = result.data;
+        var errors = result.errors;
+        if(result.success === true) {
+          window.location.replace("/");
+        }
+        else {
+          alert(errors.join("\r\n"));
+        }
       },
   	  error: function(jqXHR, textStatus, errorThrown) {
+        console.log("ERROR");
         setLoginButtonDisabled(false);
-        // var respJson;
-        // try {
-        //   respJson = jQuery.parseJSON(jqXHR.responseText);
-        //   respJson = respJson.errors;
-        // } catch (err) {
-        //
-        // }
-        // if(isPresent(respJson)) {
-        //   callMessageDialog(false, respJson.title, respJson.errors);
-        // }
-        // else {
-        //   callMessageDialog(false, "Ошибка", "Неопознанная ошибка на сервере");
-        // }
+        var respJson;
+        try {
+          respJson = $.parseJSON(jqXHR.responseText);
+        } catch (err) {
+
+        }
+        console.log(respJson);
+        console.log(respJson.errors);
+        if(isPresent(respJson)) {
+          alert(respJson.errors.join("\r\n"));
+        }
+        else {
+          alert("Неопознанная ошибка на сервере");
+        }
       }
     });
     return false;

@@ -1,4 +1,45 @@
 module ApplicationHelper
+  def asset_data_base64(path)
+    asset = Rails.application.assets.find_asset(path)
+    throw "Could not find asset '#{path}'" if asset.nil?
+    base64 = Base64.encode64(asset.to_s).gsub(/\s+/, "")
+    "data:#{asset.content_type};base64,#{Rack::Utils.escape(base64)}"
+  end
+
+  def translated_errors_from_model(model)
+    model.errors.collect do |error|
+      class_name = "#{model.class}".underscore
+      translated_key = I18n.t("activerecord.attributes.#{class_name}.#{error}")
+      {translated_key => model.errors[error].first}
+    end
+  end
+
+  # Унификация ответа от сервера
+  def render_response(status, success, info, data, errors)
+    render :status => status,
+           :json => { :success => success,
+                      :info => info,
+                      :data => data,
+                      :errors => errors }
+  end
+
+  # Отправляет ответ клиенту с данными, возвращенными в get_method.
+  def simple_json_response(success_info, &get_method)
+    get_method ||= lambda{ [] }
+
+    begin
+      render_response(200, true, success_info, get_method.call, {})
+    rescue UserException => e
+      render_response(200, false, e.message, e.data, e.object)
+    rescue ActionController::ParameterMissing => e
+      render_response(200, false, "Params error", nil, { e.param => ['parameter is required'] })
+    rescue Exception => e
+      puts e.message
+      puts e.backtrace
+      render_response(500, false, e.message, nil, {})
+    end
+  end
+
   def last_modified_date
     DateTimeUtils.datetime_from_timestamp(params[:last_modified].nil? ? 0 : params[:last_modified].to_i)
   end

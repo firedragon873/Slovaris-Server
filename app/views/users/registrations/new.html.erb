@@ -19,7 +19,7 @@
       <%= text_field_tag "user[name]", "", class: "form-control",
                                            autocomplete: "off",
                                            placeholder: t(:name_placeholder, scope: @i18n_scope) %>
-      <%= select_tag "user[gender]", options_for_select(User.genders.map { |key, value| [t(key, scope: [:enums]), value] } ),
+      <%= select_tag "user[gender]", options_for_select(User.genders.map { |key, value| [t(key, scope: [:enums]), key] } ),
                                      class: "form-control" %>
       <%= text_field_tag "user[birthday]", "", class: "form-control",
                                               autocomplete: "off",

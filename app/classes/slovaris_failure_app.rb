@@ -24,10 +24,7 @@ class SlovarisFailureApp < Devise::FailureApp
     response = { success: false,
                  info: "Login Failed",
                  data: nil,
-                 errors: {
-                   title:  I18n.t(:authenticate_error_title, scope: [:api, :sessions]),
-                   errors: [i18n_message]
-                 }
+                 errors: [i18n_message]
                }
     self.response_body = response.to_json
   end

@@ -1,0 +1,29 @@
+// Page header
+.page_header {
+  height: 50px;
+  background: #337ab7;
+  border-bottom: 2px solid gray;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  position: fixed;
+  z-index: 1025;
+}
+
+.page_header .right_group {
+  float: right;
+  line-height: 50px;
+  margin-right: 40px;
+}
+
+.page_header .username {
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid gray;
+  text-align: center;
+  padding: 5px 10px;
+  margin: 10px;
+  height: 30px;
+  font-weight: normal;
+  font-size: 16px;
+}

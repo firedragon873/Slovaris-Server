@@ -1,5 +1,6 @@
 ru:
   application_name: "Словарис"
+  sign_out_button: "Выход"
   enums:
     pupil_group:   "Ученики"
     teacher_group: "Учителя"
@@ -45,6 +46,10 @@ ru:
         sign_in_button: "Вход"
         sign_up_button: "Регистрация"
         sign_up_link: "Зарегистрироваться"
+  api:
+    users:
+      sessions:
+        authenticate_error_title: "Ошибка авторизации"
   # Defaults
   date:
     abbr_day_names:

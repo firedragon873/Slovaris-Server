@@ -7,9 +7,10 @@ class User < ApplicationRecord
          :rememberable,
          :validatable,
          :recoverable
-         # :confirmable
-
-  validates :login, presence: true,  uniqueness: true
+         
+  validates :login, presence: true,
+                    uniqueness: true,
+                    format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
   validates :email, presence: false,
                     uniqueness: true,
                     format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
