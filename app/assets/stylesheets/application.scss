@@ -8,6 +8,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "page_header";
+@import "main";
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

@@ -7,14 +7,18 @@ class User < ApplicationRecord
          :rememberable,
          :validatable,
          :recoverable
-         
+
   validates :login, presence: true,
                     uniqueness: true,
                     format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
   validates :email, presence: false,
                     uniqueness: true,
                     format: { with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/ }
-  validates :password_confirmation, presence: true
+
+  has_attached_file :avatar, styles: { mini: '100x100>', small: '300x300>', medium: '320x320>', large: '640x640>' },
+                           url: '/system/images/:id/:style/:basename.:extension',
+                           path: ':rails_root/public/system/images/:id/:style/:basename.:extension'
+  validates_attachment :avatar, content_type: { content_type: %w(image/jpeg image/jpg image/png) }
 
   before_save :ensure_authentication_token
 

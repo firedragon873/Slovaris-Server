@@ -71,7 +71,7 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.logger = Logger.new(config.paths["log"].first, 1, 10485760) # 10 megabytes
+  config.logger = Logger.new(config.paths["log"].first, 5, 10485760) # 10 megabytes
   config.log_level = :debug
 
   # Do not dump schema after migrations.

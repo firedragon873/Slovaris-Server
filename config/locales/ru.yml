@@ -50,6 +50,8 @@ ru:
     users:
       sessions:
         authenticate_error_title: "Ошибка авторизации"
+  main:
+    update_account: "Обновить"
   # Defaults
   date:
     abbr_day_names:

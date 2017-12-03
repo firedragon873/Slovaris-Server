@@ -61,3 +61,7 @@ function isPresent(value) {
 function isBlank(value) {
   return value === undefined || value === null;
 }
+
+function setSubmitButtonDisabled(disabled) {
+  $("input[type='submit']").attr("disabled", disabled);
+}

@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function() {
   $(".session_form").submit(function (event) {
     event.stopPropagation();
 
-    setLoginButtonDisabled(true);
+    setSubmitButtonDisabled(true);
 
     $.ajax({
       url: $(".session_form").attr("action"),
@@ -16,7 +16,7 @@ $(document).on('turbolinks:load', function() {
       processData: false,
       contentType: false,
       success: function(result, textStatus, jqXHR) {
-        setLoginButtonDisabled(false);
+        setSubmitButtonDisabled(false);
         var data   = result.data;
         var errors = result.errors;
         if(result.success === true) {
@@ -27,16 +27,13 @@ $(document).on('turbolinks:load', function() {
         }
       },
   	  error: function(jqXHR, textStatus, errorThrown) {
-        console.log("ERROR");
-        setLoginButtonDisabled(false);
+        setSubmitButtonDisabled(false);
         var respJson;
         try {
           respJson = $.parseJSON(jqXHR.responseText);
         } catch (err) {
 
         }
-        console.log(respJson);
-        console.log(respJson.errors);
         if(isPresent(respJson)) {
           alert(respJson.errors.join("\r\n"));
         }
@@ -48,7 +45,3 @@ $(document).on('turbolinks:load', function() {
     return false;
   });
 });
-
-function setLoginButtonDisabled(disabled) {
-  $(".session_form input[type='submit']").attr("disabled", disabled);
-}

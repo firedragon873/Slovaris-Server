@@ -3,15 +3,20 @@
   <head>
     <meta name="turbolinks-cache-control" content="no-cache">
     <%= stylesheet_link_tag    'application', media: 'all', :'data-turbolinks-track' => "true" %>
+
     <%= javascript_include_tag 'application', media: 'all', :'data-turbolinks-track' => "true" %>
+    <%= javascript_include_tag 'scripts', media: 'all', :'data-turbolinks-track' => "true" %>
+
     <%= csrf_meta_tags %>
   </head>
   <body>
     <div class="page_header">
-      <%= render partial: "/layouts/admin/page_header" %>
+      <%= render partial: "/layouts/page_header" %>
     </div>
-    <div class="page_content">
-      <%= yield %>
+    <div class="main_container">
+      <div class="content">
+        <%= yield %>
+      </div>
     </div>
   </body>
 

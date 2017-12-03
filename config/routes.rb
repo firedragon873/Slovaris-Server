@@ -14,6 +14,10 @@ Rails.application.routes.draw do
                                    }
 
   devise_scope :user do
+
+    get  '/' => 'main#index'
+    post '/update_account' => 'main#update_account'
+
     namespace :api do
       namespace :users do
         resources :sessions,      only: [:create]
