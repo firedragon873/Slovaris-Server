@@ -24,6 +24,10 @@ class User < ApplicationRecord
 
   has_one :user_group
 
+  has_many :dictionaries, class_name: "Dictionary::Dictionary"
+  has_many :words, class_name: "Dictionary::Word"
+                   through: :dictionaries
+
   enum gender: [:male, :female]
 
 

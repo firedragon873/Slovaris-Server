@@ -9,6 +9,8 @@ ru:
     male: "Мужской"
     female: "Женский"
 
+    english: "Английский"
+
   activerecord:
     attributes:
       user:

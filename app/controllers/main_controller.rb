@@ -9,7 +9,6 @@ class MainController < BaseController
     @user = current_user
     @user.assign_attributes(local_params)
     @user.save
-    puts @user.errors.messages
     redirect_to "/"
   end
 
