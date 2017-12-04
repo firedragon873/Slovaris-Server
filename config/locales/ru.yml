@@ -52,7 +52,7 @@ ru:
     users:
       sessions:
         authenticate_error_title: "Ошибка авторизации"
-  main:
+  account:
     update_account: "Обновить"
   # Defaults
   date:

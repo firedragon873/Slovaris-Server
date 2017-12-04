@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   extend Devise::Models
+  include Concerns::Displayable
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
@@ -25,7 +26,7 @@ class User < ApplicationRecord
   has_one :user_group
 
   has_many :dictionaries, class_name: "Dictionary::Dictionary"
-  has_many :words, class_name: "Dictionary::Word"
+  has_many :words, class_name: "Dictionary::Word",
                    through: :dictionaries
 
   enum gender: [:male, :female]
@@ -37,6 +38,13 @@ class User < ApplicationRecord
     self.password = password
     self.password_confirmation = password_confirmation
     self.save
+  end
+
+  def display_name
+    username = ""
+    username << "#{self.name} "   if self.name.present?
+    username << "#{self.surname}" if self.surname.present?
+    username.present? ? username.strip : self.login
   end
 
   private

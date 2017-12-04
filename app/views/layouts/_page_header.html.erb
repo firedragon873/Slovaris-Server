@@ -1,4 +1,12 @@
+<div class="left_group">
+  <%= link_to "/" do %>
+    <span class="glyphicon glyphicon-home"></span>
+  <% end %>
+</div>
 <div class="right_group">
-  <span class="username noselect"><%= current_user.login %></span>
+  <%= image_tag current_user.avatar.exists? ? current_user.avatar.url(:mini) : "empty_avatar.png" , class: "avatar_preview" %>
+  <span class="username noselect">
+    <%= link_to current_user.display_name, "/account", :'data-turbolinks' => "true" %>
+  </span>
   <%= link_to t(:sign_out_button), "/sign_out", method: "DELETE", class: "btn btn-danger"%>
 </div>

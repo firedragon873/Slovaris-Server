@@ -1,0 +1,65 @@
+<%= form_tag "/account/update", method: "post",
+                                class: "account_form col-sm-12",
+                                multipart: true,
+						                    enctype: "multipart/form-data" do |form| %>
+  <%= hidden_field_tag "user[login]", @user.login %>
+  <div class="avatar_container col-sm-2">
+    <%= image_tag @user.avatar.exists? ? @user.avatar.url : "empty_avatar.png" , class: "avatar" %>
+    <%= file_field_tag "user[avatar]", accept: "image/png,image/gif,image/jpeg", class: "file_input" %>
+  </div>
+  <div class="fields_container col-sm-10">
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag "user[name]",  User.human_attribute_name(:name), class: "control-label" %>
+      </div>
+      <div class="col-sm-10">
+        <%= text_field_tag "user[name]", @user.name, class: "form-control slovaris_control",
+                                                     autocomplete: "off",
+                                                     placeholder: "" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag "user[surname]",  User.human_attribute_name(:surname), class: "control-label" %>
+      </div>
+      <div class="col-sm-10">
+        <%= text_field_tag "user[surname]", @user.surname, class: "form-control slovaris_control",
+                                                         autocomplete: "off",
+                                                         placeholder: "" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag "user[patronymic]",  User.human_attribute_name(:patronymic), class: "control-label" %>
+      </div>
+      <div class="col-sm-10">
+        <%= text_field_tag "user[patronymic]", @user.patronymic, class: "form-control slovaris_control",
+                                                               autocomplete: "off",
+                                                               placeholder: "" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag "user[gender]",  User.human_attribute_name(:gender), class: "control-label" %>
+      </div>
+      <div class="col-sm-10">
+        <%= select_tag "user[gender]", options_for_select(User.genders.map { |key, value| [t(key, scope: [:enums]), key] } ),
+                                     class: "form-control slovaris_control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag "user[birthday]",  User.human_attribute_name(:birthday), class: "control-label" %>
+      </div>
+      <div class="col-sm-10">
+        <%= text_field_tag "user[birthday]", "", class: "form-control slovaris_control",
+                                                 autocomplete: "off",
+                                                 type: "tel",
+                                                 placeholder: User.human_attribute_name(:birthday) %>
+      </div>
+    </div>
+    <div class="row">
+      <%= submit_tag t(:update_account, scope: @i18n_scope), class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

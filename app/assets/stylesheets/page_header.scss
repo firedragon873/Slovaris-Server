@@ -10,14 +10,35 @@
   border-bottom: 2px solid gray;
 }
 
+.page_header .left_group {
+  float: left;
+  line-height: 50px;
+  margin-left: 40px;
+}
+
+.page_header .glyphicon-home {
+  font-size: 26px;
+  line-height: inherit;
+  color: white;
+}
+
 .page_header .right_group {
   float: right;
   line-height: 50px;
   margin-right: 40px;
 }
 
+.page_header .avatar_preview {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  object-fit: fill;
+  vertical-align: middle;
+}
+
 .page_header .username {
   background-color: white;
+  vertical-align: middle;
   border-radius: 4px;
   border: 1px solid gray;
   text-align: center;

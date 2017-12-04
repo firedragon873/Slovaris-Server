@@ -9,15 +9,15 @@
 }
 
 .content {
-  position: absolute;
   background: white;
   border: 1px solid #e6e6e6;
   position: relative;
   height: 100%;
+  overflow: auto;
 }
 
 .account_form {
-  margin: 10px;
+  padding: 10px;
   width: 100%;
 }
 
@@ -36,8 +36,7 @@
 }
 
 .account_form .avatar_container {
-  width: 200px;
-  display: inline-block;
+  max-width: 200px;
 }
 
 .avatar_container .avatar {
@@ -47,8 +46,5 @@
 }
 
 .account_form .fields_container {
-  display: inline-block;
-  margin-left: 20px;
-  position: absolute;
-  top: 0px;
+  margin-left: 10px;
 }
