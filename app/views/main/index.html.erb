@@ -1,0 +1,24 @@
+<h3> <%= t(:my_dictionaries, scope: @i18n_scope) %></h3>
+<table class="table table table-condensed table-striped table-hover">
+  <thead>
+    <tr>
+      <th class="header"><%= Dictionary::Dictionary.human_attribute_name(:name) %></th>
+      <th class="header"><%= Dictionary::Dictionary.human_attribute_name(:language) %></th>
+      <th class="header"><%= Dictionary::Dictionary.human_attribute_name(:words) %></th>
+      <th class="header"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @dictionaries.each do |dictionary| %>
+      <tr>
+        <td><%= dictionary.name %></td>
+        <td><%= t(dictionary.language, scope: [:enums]) %></td>
+        <td><%= t(:words_count, scope: [:pluralizable], count: dictionary.words.size)%> </td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+  <%= link_to t(:add_dictionary, scope: @i18n_scope), "/dictionary/dictionaries/new", class: "btn btn-success" %>
+</div>

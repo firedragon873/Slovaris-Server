@@ -1,5 +1,5 @@
 <%= form_tag "/account/update", method: "post",
-                                class: "account_form col-sm-12",
+                                class: "slovaris_form col-sm-12",
                                 multipart: true,
 						                    enctype: "multipart/form-data" do |form| %>
   <%= hidden_field_tag "user[login]", @user.login %>
@@ -59,7 +59,8 @@
       </div>
     </div>
     <div class="row">
-      <%= submit_tag t(:update_account, scope: @i18n_scope), class: "btn btn-primary" %>
+      <%= submit_tag t(:update, scope: @i18n_scope), class: "btn btn-primary" %>
+      <%= link_to t(:cancel, scope: @i18n_scope), :back, class: "btn" %>
     </div>
   </div>
 <% end %>

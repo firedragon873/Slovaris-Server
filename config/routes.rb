@@ -19,6 +19,10 @@ Rails.application.routes.draw do
     get  '/account'        => 'account#index'
     post '/account/update' => 'account#update_account'
 
+    namespace :dictionary do
+      resources :dictionaries, only: [:new, :create, :edit, :update, :destroy]
+    end
+
     namespace :api do
       namespace :users do
         resources :sessions,      only: [:create]

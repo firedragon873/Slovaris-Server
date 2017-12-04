@@ -11,6 +11,13 @@ ru:
 
     english: "Английский"
 
+  pluralizable:
+    words_count:
+      zero: "Ни одного слова"
+      one:  "%{count} слово"
+      few:  "%{count} слова"
+      other: "%{count} слов"
+
   activerecord:
     attributes:
       user:
@@ -29,31 +36,45 @@ ru:
         group_type: "Тип группы"
         name: "Имя"
         description: "Описание"
+      dictionary/dictionary:
+        name: "Название"
+        language: "Язык"
+        words: "Слова"
   # Scopes for view controllers
   users:
     sessions:
-        login_title: "Вход"
-        register_title: "Регистрация"
-        login_placeholder: "Логин (адрес электронной почты)"
-        password_placeholder: "Пароль"
-        password_confirmation_placeholder: "Подтвердждение пароля"
-        name_placeholder: "Имя"
-        surname_placeholder: "Фамилия"
-        patronymic_placeholder: "Отчество"
-        birthday_placeholder: "Дата рождения"
-        gender_placeholder: "Пол"
+      login_title: "Вход"
+      register_title: "Регистрация"
+      login_placeholder: "Логин (адрес электронной почты)"
+      password_placeholder: "Пароль"
+      password_confirmation_placeholder: "Подтвердждение пароля"
+      name_placeholder: "Имя"
+      surname_placeholder: "Фамилия"
+      patronymic_placeholder: "Отчество"
+      birthday_placeholder: "Дата рождения"
+      gender_placeholder: "Пол"
 
-        remember_me: "Запомнить меня"
+      remember_me: "Запомнить меня"
 
-        sign_in_button: "Вход"
-        sign_up_button: "Регистрация"
-        sign_up_link: "Зарегистрироваться"
+      sign_in_button: "Вход"
+      sign_up_button: "Регистрация"
+      sign_up_link: "Зарегистрироваться"
   api:
     users:
       sessions:
         authenticate_error_title: "Ошибка авторизации"
+  main:
+    my_dictionaries: "Мои словари"
+    add_dictionary: "Добавить словарь"
   account:
-    update_account: "Обновить"
+    update: "Обновить"
+    cancel: "Отмена"
+  dictionary:
+    dictionary:
+      new: "Новый словарь"
+      create: "Добавить"
+      update: "Обновить"
+      cancel: "Отмена"
   # Defaults
   date:
     abbr_day_names:

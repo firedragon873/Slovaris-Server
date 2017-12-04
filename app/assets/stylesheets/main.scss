@@ -29,22 +29,22 @@
   width: 300px !important;
 }
 
-.account_form .row {
+form.slovaris_form .row {
   padding: 10px 0px;
   margin-left: 0px;
   margin-right: 0px;
 }
 
-.account_form .avatar_container {
+.slovaris_form .avatar_container {
   max-width: 200px;
 }
 
-.avatar_container .avatar {
+.slovaris_form .avatar {
   width: 100%;
   height: 200px;
   object-fit: contain;
 }
 
-.account_form .fields_container {
+.slovaris_form .fields_container {
   margin-left: 10px;
 }

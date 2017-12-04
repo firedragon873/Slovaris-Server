@@ -1,0 +1,21 @@
+<div class="fields_container col-sm-10">
+  <div class="row">
+    <div class="col-sm-2">
+      <%= label_tag "dictionary[name]",  Dictionary::Dictionary.human_attribute_name(:name), class: "control-label" %>
+    </div>
+    <div class="col-sm-10">
+      <%= text_field_tag "dictionary[name]", @dictionary.name, class: "form-control slovaris_control",
+                                                               autocomplete: "off",
+                                                               placeholder: "" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <%= label_tag "dictionary[language]",  User.human_attribute_name(:surname), class: "control-label" %>
+    </div>
+    <div class="col-sm-10">
+      <%= select_tag "dictionary[language]", options_for_select(Dictionary::Dictionary.languages.map { |key, value| [t(key, scope: [:enums]), key] }, @dictionary.language),
+                                   class: "form-control slovaris_control" %>
+    </div>
+  </div>
+</div>
