@@ -5,7 +5,6 @@
       <th class="header"><%= Dictionary::Dictionary.human_attribute_name(:name) %></th>
       <th class="header"><%= Dictionary::Dictionary.human_attribute_name(:language) %></th>
       <th class="header"><%= Dictionary::Dictionary.human_attribute_name(:words) %></th>
-      <th class="header"></th>
     </tr>
   </thead>
   <tbody>
@@ -15,7 +14,6 @@
         <td><%= dictionary.name %></td>
         <td><%= t(dictionary.language, scope: [:enums]) %></td>
         <td><%= t(:words_count, scope: [:pluralizable], count: dictionary.words.size)%> </td>
-        <td><%= button_tag t(:delete, scope: @i18n_scope), type: "button", class: "btn btn-danger delete_dictionary"%></td>
       </tr>
     <% end %>
   </tbody>
