@@ -21,8 +21,8 @@ Rails.application.routes.draw do
 
     namespace :dictionary do
       resources :dictionaries, only: [:new, :create, :edit, :update, :destroy]
-      get "dictionaries/:id/new_word"      => "dictionaries#new_word"
-      get "dictionaries/:id/new_translate" => "dictionaries#new_translate"
+      get "dictionaries/new_word"      => "dictionaries#new_word"
+      get "dictionaries/new_translate" => "dictionaries#new_translate"
     end
 
     namespace :api do

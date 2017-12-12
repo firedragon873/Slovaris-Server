@@ -3,7 +3,6 @@
     <span class="glyphicon glyphicon-move"></span>
     <%= hidden_field_tag "dictionary[words_attributes][][translates_attributes][][id]", value = translate.id %>
     <%= hidden_field_tag "dictionary[words_attributes][][translates_attributes][][position]", value = translate.position, class: "position_field" %>
-    <%= hidden_field_tag "dictionary[words_attributes][][translates_attributes][][word_id]", value = translate.word_id %>
   </td>
   <td>
     <%= text_field_tag "dictionary[words_attributes][][translates_attributes][][translate]", translate.translate, class: "form-control slovaris_control",

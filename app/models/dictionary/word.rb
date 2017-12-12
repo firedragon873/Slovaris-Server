@@ -1,7 +1,7 @@
 class Dictionary::Word < ApplicationRecord
   include Concerns::Language
 
-  belongs_to :dictionary
+  belongs_to :dictionary, required: false
   has_many :syllables, class_name: "Dictionary::Syllable", dependent: :destroy
   has_many :translates, class_name: "Dictionary::Translate", dependent: :destroy
   accepts_nested_attributes_for :translates, allow_destroy: true

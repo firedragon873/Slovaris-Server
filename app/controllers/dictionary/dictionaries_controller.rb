@@ -5,8 +5,11 @@ class Dictionary::DictionariesController < BaseController
   end
 
   def create
-    @dictionary = Dictionary::Dictionary.new(dictionary_params)
+    local_params = dictionary_params
+    @dictionary = Dictionary::Dictionary.new
+    @dictionary.assign_attributes(local_params)
     @dictionary.save
+    puts @dictionary.errors.messages
     redirect_to "/"
   end
 
@@ -15,8 +18,7 @@ class Dictionary::DictionariesController < BaseController
   end
 
   def new_word
-    @dictionary = find_by_id
-    @word = Dictionary::Word.new(dictionary_id: @dictionary.id, language: @dictionary.language)
+    @word = Dictionary::Word.new
     render partial: "word", layout: false, locals: { word: @word }
   end
 
@@ -58,10 +60,11 @@ class Dictionary::DictionariesController < BaseController
         end
         word_attributes
       end
-      p[:words_attributes] = add_delete_info(p[:words_attributes].to_a,
-                                             @dictionary.words)
+      if @dictionary.present?
+        p[:words_attributes] = add_delete_info(p[:words_attributes].to_a,
+                                               @dictionary.words)
+      end
       p[:user_id] = current_user.id
-      puts p
       p
     end
 
