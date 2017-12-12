@@ -48,3 +48,65 @@ form.slovaris_form .row {
 .slovaris_form .fields_container {
   margin-left: 10px;
 }
+
+.clickable_row {
+  cursor: pointer;
+}
+
+.words_container {
+  margin-top: 20px;
+
+}
+
+.words_container .word_row  {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  position: relative;
+  height: 300px;
+}
+
+.words_container .word_row > div {
+  display: inline-block;
+}
+
+.words_container .word_row:first-child  {
+  margin-top: 0px;
+}
+
+.word_container {
+  width: 200px;
+}
+
+.word_container input[type='file'] {
+  width: 100%;
+}
+
+.word_image {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.translates_container {
+  top: 15px;
+  left: 220px;
+  right: 100px;
+  bottom: 15px;
+  position: absolute;
+  overflow: auto;
+}
+
+.translates_container .translates_table {
+  width: 100%;
+  overflow: visible;
+}
+
+tr .cell_position {
+  width: 30px;
+}
+
+tr .delete_cell {
+  width: 50px;
+}

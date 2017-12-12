@@ -3,7 +3,7 @@
                                          class: "col-sm-12 slovaris_form" do |form| %>
   <%= render partial: "form" %>
   <div class="row col-sm-10">
-    <%= submit_tag t(:create, scope: @i18n_scope), class: "btn btn-primary" %>
+    <%= submit_tag t(:save, scope: @i18n_scope), class: "btn btn-primary" %>
     <%= link_to t(:cancel, scope: @i18n_scope), :back, class: "btn" %>
   </div>
 <% end %>

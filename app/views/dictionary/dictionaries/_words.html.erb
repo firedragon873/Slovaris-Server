@@ -1,0 +1,7 @@
+<div class="words_container">
+  <h4><%= Dictionary::Dictionary.human_attribute_name(:words) %></h4>
+  <%= button_tag t(:add_word, scope: @i18n_scope), class: "btn btn-success", type: "button", id: "add_new_word" %>
+  <% @dictionary.words.each do |word| %>
+    <%= render partial: "word", locals: { word: word } %>
+  <% end %>
+</div>

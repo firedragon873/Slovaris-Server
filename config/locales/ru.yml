@@ -40,6 +40,12 @@ ru:
         name: "Название"
         language: "Язык"
         words: "Слова"
+      dictionary/word:
+        word: "Слово"
+        image: "Иллюстрация"
+        translates: "Переводы"
+      dictionary/translate:
+        translate: "Перевод"
   # Scopes for view controllers
   users:
     sessions:
@@ -72,9 +78,14 @@ ru:
   dictionary:
     dictionary:
       new: "Новый словарь"
+      edit: "Редактирование"
       create: "Добавить"
+      save: "Сохранить"
       update: "Обновить"
       cancel: "Отмена"
+      add_word: "Добавить"
+      delete: "Удалить"
+
   # Defaults
   date:
     abbr_day_names:

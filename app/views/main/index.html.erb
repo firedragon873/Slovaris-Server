@@ -1,5 +1,5 @@
 <h3> <%= t(:my_dictionaries, scope: @i18n_scope) %></h3>
-<table class="table table table-condensed table-striped table-hover">
+<table class="table table-condensed table-striped table-hover">
   <thead>
     <tr>
       <th class="header"><%= Dictionary::Dictionary.human_attribute_name(:name) %></th>
@@ -10,11 +10,12 @@
   </thead>
   <tbody>
     <% @dictionaries.each do |dictionary| %>
-      <tr>
+      <% url = "/dictionary/dictionaries/#{dictionary.id}/edit" %>
+      <tr class="clickable_row" navigation_url="<%= url %>">
         <td><%= dictionary.name %></td>
         <td><%= t(dictionary.language, scope: [:enums]) %></td>
         <td><%= t(:words_count, scope: [:pluralizable], count: dictionary.words.size)%> </td>
-        <td></td>
+        <td><%= button_tag t(:delete, scope: @i18n_scope), type: "button", class: "btn btn-danger delete_dictionary"%></td>
       </tr>
     <% end %>
   </tbody>

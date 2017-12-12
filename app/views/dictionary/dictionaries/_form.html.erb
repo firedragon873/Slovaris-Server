@@ -1,3 +1,4 @@
+<%= hidden_field_tag("dictionary[id]", value = @dictionary.id) %>
 <div class="fields_container col-sm-10">
   <div class="row">
     <div class="col-sm-2">
@@ -9,13 +10,17 @@
                                                                placeholder: "" %>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-2">
-      <%= label_tag "dictionary[language]",  User.human_attribute_name(:surname), class: "control-label" %>
+  <% if @dictionary.new_record? %>
+    <div class="row">
+      <div class="col-sm-2">
+        <%= label_tag "dictionary[language]",  User.human_attribute_name(:surname), class: "control-label" %>
+      </div>
+      <div class="col-sm-10">
+        <%= select_tag "dictionary[language]", options_for_select(Dictionary::Dictionary.languages.map { |key, value| [t(key, scope: [:enums]), key] }, @dictionary.language),
+                                     class: "form-control slovaris_control" %>
+      </div>
     </div>
-    <div class="col-sm-10">
-      <%= select_tag "dictionary[language]", options_for_select(Dictionary::Dictionary.languages.map { |key, value| [t(key, scope: [:enums]), key] }, @dictionary.language),
-                                   class: "form-control slovaris_control" %>
-    </div>
-  </div>
+  <% else %>
+    <%= render partial: "words" %>
+  <% end %>
 </div>

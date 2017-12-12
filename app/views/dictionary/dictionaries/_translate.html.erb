@@ -1,0 +1,16 @@
+<tr class="translate_row">
+  <td class="drag-handler">
+    <span class="glyphicon glyphicon-move"></span>
+    <%= hidden_field_tag "dictionary[words_attributes][][translates_attributes][][id]", value = translate.id %>
+    <%= hidden_field_tag "dictionary[words_attributes][][translates_attributes][][position]", value = translate.position, class: "position_field" %>
+    <%= hidden_field_tag "dictionary[words_attributes][][translates_attributes][][word_id]", value = translate.word_id %>
+  </td>
+  <td>
+    <%= text_field_tag "dictionary[words_attributes][][translates_attributes][][translate]", translate.translate, class: "form-control slovaris_control",
+                                                               autocomplete: "off",
+                                                               placeholder: Dictionary::Translate.human_attribute_name(:translate) %>
+  </td>
+  <td>
+    <%= button_tag t(:delete, scope: @i18n_scope), type: "button", class: "btn btn-danger delete_translate_row"%>
+  </td>
+</tr>

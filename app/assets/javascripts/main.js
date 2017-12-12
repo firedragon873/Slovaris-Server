@@ -3,44 +3,76 @@ $(document).on('turbolinks:load', function() {
     placeholder: "__-__-____"
   });
 
-  // $("form").submit(function (event) {
-  //   event.stopPropagation();
-  //   setSubmitButtonDisabled(true);
+  $(".clickable_row").on("click", function () {
+    navigateToUrl($(this).attr("navigation_url"));
+  });
 
-    // $.ajax({
-    //   url: $(".session_form").attr("action"),
-    //   data: convertFormDataToJSON($(".session_form")),
-    //   type: $(".session_form").attr("method"),
-    //   dataType: 'json',
-    //   processData: false,
-    //   contentType: false,
-    //   success: function(result, textStatus, jqXHR) {
-    //     setSubmitButtonDisabled(false);
-    //     var data   = result.data;
-    //     var errors = result.errors;
-    //     if(result.success === true) {
-    //       window.location.replace("/");
-    //     }
-    //     else {
-    //       alert(errors.join("\r\n"));
-    //     }
-    //   },
-  	//   error: function(jqXHR, textStatus, errorThrown) {
-    //     setSubmitButtonDisabled(false);
-    //     var respJson;
-    //     try {
-    //       respJson = $.parseJSON(jqXHR.responseText);
-    //     } catch (err) {
-    //
-    //     }
-    //     if(isPresent(respJson)) {
-    //       alert(respJson.errors.join("\r\n"));
-    //     }
-    //     else {
-    //       alert("Неопознанная ошибка на сервере");
-    //     }
-    //   }
-    // });
-  //   return false;
-  // });
+  $(".word_row").each(function(index) {
+    addWordRowListners($(this));
+  });
+
+  $("#add_new_word").on("click", function() {
+    var parentDiсt = $("#dictionary_id").val();
+    $.ajax({
+      url: "/dictionary/dictionaries/" + parentDiсt + "/new_word",
+      type: "GET",
+      success: function(result, textStatus, jqXHR) {
+        $(".words_container").append(result);
+        addWordRowListners($(".word_row").last());
+      }
+    });
+  });
+
 });
+
+function addWordRowListners(row) {
+  addDeleteRowListner(row);
+  addSortListnersToTable(row.find(".translates_table"));
+
+  row.find(".translates_table .translate_row").each(function() {
+    addDeleteTranslateRowListner($(this));
+  });
+
+  var parentDiсt = $("#dictionary_id").val();
+  row.find(".add_new_translate").on("click", function() {
+    $.ajax({
+      url: "/dictionary/dictionaries/" + parentDiсt + "/new_translate",
+      type: "GET",
+      success: function(result, textStatus, jqXHR) {
+        row.find(".translates_table tbody").append(result);
+
+        row.find(".translates_table tbody tr").each(function(index) {
+          $(this).find(".position_field").html(index + 1);
+        });
+
+        addDeleteTranslateRowListner(row.find(".translates_table .translate_row").last());
+      }
+    });
+  });
+
+}
+
+function addSortListnersToTable(table) {
+  Sortable.create(table.find("tbody")[0], {
+    animation: 150,
+    scroll: true,
+    handle: '.drag-handler',
+    onUpdate: function (evt) {
+      table.find("tbody tr").each(function(index) {
+        $(this).find(".position_field").html(index + 1)
+  		});
+    }
+  });
+}
+
+function addDeleteRowListner(row) {
+  row.find(".delete_row").on("click", function() {
+    row.remove();
+  });
+}
+
+function addDeleteTranslateRowListner(row) {
+  row.find(".delete_translate_row").on("click", function() {
+    row.remove();
+  });
+}

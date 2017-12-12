@@ -16,6 +16,7 @@
 //= require jquery.mask.min
 //= require moment
 //= require moment-ru
+//= require sortable
 
 $(document).on('turbolinks:load', function() {
 });

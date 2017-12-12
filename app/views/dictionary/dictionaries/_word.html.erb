@@ -1,0 +1,37 @@
+<div class="word_row">
+  <%= hidden_field_tag "dictionary[words_attributes][][id]", value = word.id %>
+  <%= hidden_field_tag "dictionary[words_attributes][][language]", value = word.language %>
+
+  <div class="word_container">
+    <% if word.image.exists? %>
+      <%= image_tag word.image.url, class: "word_image" %>
+    <% end %>
+    <%= file_field_tag "dictionary[words_attributes][][image]", accept: "image/png,image/gif,image/jpeg", class: "file_input" %>
+
+    <%= text_field_tag "dictionary[words_attributes][][word]", word.word, class: "form-control slovaris_control",
+                                                               autocomplete: "off",
+                                                               placeholder: Dictionary::Word.human_attribute_name(:word) %>
+  </div>
+  <div class="translates_container">
+    <div>
+      <%= button_tag t(:add_word, scope: @i18n_scope), class: "btn btn-success add_new_translate", type: "button" %>
+    </div>
+    <table class="table table-condensed table-striped table-hover draggable_table translates_table">
+      <thead>
+        <tr class="translate_row">
+          <th class="header cell_position"></th>
+          <th class="header word"><%= Dictionary::Word.human_attribute_name(:translates) %></th>
+          <th class="header delete_cell"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% word.translates.each do |translate| %>
+          <%= render partial: "translate", locals: { translate: translate } %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="delete_container" style="float: right;">
+    <%= button_tag t(:delete, scope: @i18n_scope), type: "button", class: "btn btn-danger delete_row"%>
+  </div>
+</tr>
